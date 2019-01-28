@@ -1,66 +1,248 @@
 <?php
 
-/*
- * Составьте функцию вычисления дискриминанта квадратного уравнения. Покройте ее тестами. Используя эту функцию, напишите программу, которая решает квадратное уравнение. Оформите красивый вывод решения.
-Проведите самостоятельное исследование на тему "Что возвращает оператор include, если его использовать как функцию?". Используйте руководство по языку, составьте и приложите примеры, иллюстрирующие ваше исследование.
-* Составьте функцию, которая на вход будет принимать имя человека, а возвращать его пол, пытаясь угадать по имени (null - если угадать не удалось). Вам придется самостоятельно найти нужные вам строковые функции. Начните с написания тестов для функции.
- */
 
-function getDisc($a, $b, $c) {
 
+
+// 1 Задание
+echo '1.1 (&&)';
+echo '<br>';
+
+echo '╔═╦══╦═══╗';
+echo '<br>';
+echo '║ a ║ b ║ && ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 0 ║ 0 ║ 0 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 1 ║ 0 ║ 0 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 0 ║ 1 ║ 0 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 1 ║ 1 ║ 1 ║';
+echo '<br>';
+echo '╚═╩══╩═══╝';
+
+
+echo '<br>';
+echo '<br>';
+echo '<br>';
+
+echo '1.2 (||)';
+echo '<br>';
+
+echo '╔═╦══╦═══╗';
+echo '<br>';
+echo '║ a ║ b ║ || ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 0 ║ 0 ║ 0 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 1 ║ 0 ║ 1 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 0 ║ 1 ║ 1 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 1 ║ 1 ║ 1 ║';
+echo '<br>';
+echo '╚═╩══╩═══╝';
+
+
+echo '<br>';
+echo '<br>';
+echo '<br>';
+
+
+echo '1.3 (XOR)';
+echo '<br>';
+
+echo '╔═╦══╦═══╗';
+echo '<br>';
+echo '║ a ║ b ║ xor ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 0 ║ 0 ║ 0 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 1 ║ 0 ║ 1 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 0 ║ 1 ║ 1 ║';
+echo '<br>';
+echo '╠═╬══╬═══╣';
+echo '<br>';
+echo '║ 1 ║ 1 ║ 0 ║';
+echo '<br>';
+echo '╚═╩══╩═══╝';
+
+
+echo '<br>';
+echo '<br>';
+echo '<br>';
+
+echo '2 Задание';
+echo '<br>';
+
+function searchDisc($a, $b, $c) {
     $d = ($b * 2) - (4 * $a * $c);
 
-        if ($d > 0) {
+    return $d;
+}
+assert(-12 == searchDisc(2,2,2));
+assert(-76 == searchDisc(10,2,2));
 
-            $x1 = (-$b + sqrt($d)) / (2 * $a);
-            $x2 = (-$b - sqrt($d)) / (2 * $a);
-            echo 'x1= ' . $x1;
-            echo '<br>';
-            echo 'x2= ' . $x2;
-            return 1;
-        } elseif (0 == $d) {
-            $x = (-$b / 2 * a);
-            echo  'x = ' . $x;
-            return 2;
-        } elseif ($d < 0) {
-            echo 'Уравнение не имеет решений в действительных числах.';
-            return 3;
+$pp = searchDisc(10,-2,-2);
+echo $pp;
+
+echo '<br>';
+echo '<br>';
+echo '<br>';
+
+function squareRoots($a, $b, $c) {
+    $disc = searchDisc($a, $b, $c);
+
+    if (0 < $disc) {
+        $x1 = (-$b + sqrt($disc)) / (2 * $a);
+        $x2 = (-$b - sqrt($disc)) / (2 * $a);
+        echo 'x1= ' . $x1;
+        echo '<br>';
+        echo 'x2= ' . $x2;
+    } elseif (0 == $disc) {
+        $x = (-$b / 2 * $a);
+        echo  'x = ' . $x;
+    } elseif (0 > $disc) {
+        echo 'Уравнение не имеет решений в действительных числах.';
     }
 }
 
-//echo getDisc(-10,10,10);
-//echo '<br>';
-//echo getDisc(433,1,9);
-//echo '<br>';
-//echo getDisc(1,0,0);
+$root = squareRoots(15,-10,-100);
+echo $root;
+
+echo '<br>';
+echo '<br>';
+echo '<br>';
+
+echo '3 Задание';
+echo '<br>';
 
 
-//assert(1 == getDisc(-10,10,10));
-//assert(2 == getDisc(1,0,0));
-//assert(3 == getDisc(20,10,10));
+$f = include __Dir__ . '/test.php';
+
+var_dump($f);
+
+/*
+ * возвращает bool value. Если файл не найдется то вернется false, если путь получится построить, то вернет true (1)
+ * попробуйте в путь добавить лишнюю буквы и вы увидите warning и false
+ */
 
 
-//assert(3 == namePerson());
+echo '<br>';
+echo '<br>';
+echo '<br>';
 
-function namePerson($name) {
+echo '4 Задание';
+echo '<br>';
 
-    $s = random_int(1,3);
+/*
+ *  Составьте функцию, которая на вход будет принимать имя человека, а возвращать его пол, пытаясь угадать по имени
+ * (null - если угадать не удалось). Вам придется самостоятельно найти нужные вам строковые функции.
+ * Начните с написания тестов для функции.
+ */
 
 
-    if (1 == $s) {
-        $sex = 'man';
 
-    } elseif (2 == $s) {
-        $sex = 'woman';
-    } elseif (3 == $s) {
-        $sex = null;
+
+
+// я его не сделал, может завтра придет озорение, и досдам
+
+
+
+
+
+
+//function get_gender($name) {
+//    $last = mb_substr($name,-1,1,'UTF-8');
+//
+//    if ('а' == $last) {
+//        return 'woman';
+//    } elseif ('в' == $last) {
+//        return 'man';
+//    } elseif ('г' == $last) {
+//        return 'man';
+//    } else {
+//        return null;
+//    }
+//}
+
+
+function get($name) {
+    $last = mb_substr($name,-1,0,'UTF-8');
+    echo $last;
+
+    switch ($last) {
+        case 'а':
+            return 'woman';
+            break;
+        case 'б':
+            return 'man';
+            break;
+        default:
+            return null;
+            break;
+
     }
-    return $sex;
 }
-$g = 'rfds';
 
 
-echo namePerson($g);
+// || 'в' || 'г' || 'д' || 'ж' || 'з' || 'б' || 'и' || 'к' || 'л' || 'м' || 'н' || 'о' || 'п' || 'р' || 'с' || 'т' || 'у' || 'э' || 'ю' || 'я')
+
+
+
+//$string[count($string)-1];
+//echo  $name[count($name)-1];
+
+//echo count_chars($name[3]);
+//echo str_split($name, -1);
+
+
+
+
+//$start = substr($str, 0, 3);
+//echo $start;
+//$end = substr($str, -1);
+//echo $end;
+
+$str = "Света";
+//echo $str[2];
+//echo $str[strlen($str)-1];
+
+//echo mb_substr($str,-1,1,'UTF-8');
+
+
+
+
+
+
+
+
+
+
+
 
 
 
