@@ -158,91 +158,32 @@ echo '<br>';
 echo '4 Задание';
 echo '<br>';
 
-/*
- *  Составьте функцию, которая на вход будет принимать имя человека, а возвращать его пол, пытаясь угадать по имени
- * (null - если угадать не удалось). Вам придется самостоятельно найти нужные вам строковые функции.
- * Начните с написания тестов для функции.
- */
 
 
+function search_gender($name) {
+    $last = mb_substr($name,-1,10,'UTF-8');
 
-
-
-// я его не сделал, может завтра придет озорение, и досдам
-
-
-
-
-
-
-//function get_gender($name) {
-//    $last = mb_substr($name,-1,1,'UTF-8');
-//
-//    if ('а' == $last) {
-//        return 'woman';
-//    } elseif ('в' == $last) {
-//        return 'man';
-//    } elseif ('г' == $last) {
-//        return 'man';
-//    } else {
-//        return null;
-//    }
-//}
-
-
-function get($name) {
-    $last = mb_substr($name,-1,0,'UTF-8');
-    echo $last;
-
-    switch ($last) {
-        case 'а':
-            return 'woman';
-            break;
-        case 'б':
-            return 'man';
-            break;
-        default:
-            return null;
-            break;
-
+    if ('а' == $last || 'я' == $last) {
+        return 'woman';
     }
+
+    if ('т' == $last || 'й' == $last || 'н' == $last || 'р' == $last) {
+        return 'man';
+    }
+    return null;
 }
 
+assert('woman' === search_gender('саша'));
+assert('man' === search_gender('александр'));
+assert('woman' === search_gender('айгуля'));
+assert('man' === search_gender('альберт'));
+assert(null === search_gender('манвел'));
 
-// || 'в' || 'г' || 'д' || 'ж' || 'з' || 'б' || 'и' || 'к' || 'л' || 'м' || 'н' || 'о' || 'п' || 'р' || 'с' || 'т' || 'у' || 'э' || 'ю' || 'я')
-
-
-
-//$string[count($string)-1];
-//echo  $name[count($name)-1];
-
-//echo count_chars($name[3]);
-//echo str_split($name, -1);
-
-
-
-
-//$start = substr($str, 0, 3);
-//echo $start;
-//$end = substr($str, -1);
-//echo $end;
-
-$str = "Света";
-//echo $str[2];
-//echo $str[strlen($str)-1];
-
-//echo mb_substr($str,-1,1,'UTF-8');
-
-
-
-
-
-
-
-
-
-
-
+$person = search_gender('саша');
+echo $person;
+echo '<br>';
+$person2 = search_gender('николай');
+echo $person2;
 
 
 
